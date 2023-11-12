@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 
 from event.views import EventViewSet, Type_EventViewSet
@@ -29,5 +29,7 @@ router.register(r'status', StatusViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)), #http://127.0.0.1:8000/api/v1/event/
+    path('api/v1/', include(router.urls)),#http://127.0.0.1:8000/api/v1/event/
+    path('api/v1/auth/', include('djoser.urls')),
+    re_path(r'auth/', include('djoser.urls.authtoken'))
 ]
