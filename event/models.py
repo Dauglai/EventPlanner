@@ -17,6 +17,8 @@ class Event(models.Model):
     addres = models.CharField(max_length=100, verbose_name='Адрес')
     description = models.TextField(verbose_name='Описание')
     type_event = models.ForeignKey(Type_Event, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.title

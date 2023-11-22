@@ -18,11 +18,10 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import routers
 
-from event.views import EventViewSet, Type_EventViewSet
+from event.views import Type_EventViewSet, EventAPIList, EventAPIUpdate, EventAPIDestroy
 from tasks.views import TaskViewSet, StatusViewSet
 
 router = routers.SimpleRouter()
-router.register(r'event', EventViewSet)
 router.register(r'type_event', Type_EventViewSet)
 router.register(r'tasks', TaskViewSet)
 router.register(r'status', StatusViewSet)
@@ -30,6 +29,10 @@ router.register(r'status', StatusViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),#http://127.0.0.1:8000/api/v1/event/
+    path('api/v1/event/', EventAPIList.as_view()),
+    path('api/v1/event/<int:pk>/', EventAPIUpdate.as_view()),
+    path('api/v1/eventdelete/<int:pk>/', EventAPIDestroy.as_view()),
+    path('api/v1/auth/', include('rest_framework.urls')),
     path('api/v1/auth/', include('djoser.urls')),
     re_path(r'auth/', include('djoser.urls.authtoken'))
 ]

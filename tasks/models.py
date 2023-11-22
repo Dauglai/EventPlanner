@@ -15,6 +15,7 @@ class Task(models.Model):
     description = models.CharField(max_length=10000)
     deadline = models.DateTimeField()
     status = models.ForeignKey(Status, on_delete= models.CASCADE, null=True)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
