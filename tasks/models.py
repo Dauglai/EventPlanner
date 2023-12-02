@@ -14,8 +14,9 @@ class Task(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=10000)
     deadline = models.DateTimeField()
-    status = models.ForeignKey(Status, on_delete= models.CASCADE, null=True)
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, related_name = 'users')
+    users = models.ManyToManyField(User, related_name = 'owner')
 
     def __str__(self):
         return self.title

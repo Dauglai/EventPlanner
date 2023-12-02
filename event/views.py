@@ -8,11 +8,9 @@ from .serializers import EventSerializer, Type_EventSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
-
 class Type_EventViewSet(viewsets.ModelViewSet):
     queryset = Type_Event.objects.all()
     serializer_class = Type_EventSerializer
-
 
 
 class EventAPIList(generics.ListCreateAPIView):
