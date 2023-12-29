@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'event.apps.EventConfig',
     'tasks.apps.TasksConfig',
+    'purchases.apps.PurchasesConfig',
     'rest_framework.authtoken',
     'djoser',
 
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'EventPlanner.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, ‘frontend/build’)]
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -145,6 +147,8 @@ REST_FRAMEWORK = {
     ]
 }
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, ‘frontend/build/static’)
-]
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+  'app_labels': ["account", "event", "tasks"],
+}
