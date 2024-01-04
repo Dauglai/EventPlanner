@@ -1,13 +1,13 @@
-import React from "react";
+// import React from "react";
  
-const Profile = () => {
-    return (
-        <div>
-            <h1>
-                Your profile
-            </h1>
-        </div>
-    );
-};
+// const Profile = () => {
+//     return (
+//         <div>
+//             <h1>
+//                 Your profile
+//             </h1>
+//         </div>
+//     );
+// };
  
-export default Profile;
+// export default Profile;

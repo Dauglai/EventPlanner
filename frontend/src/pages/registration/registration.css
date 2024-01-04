@@ -1,0 +1,52 @@
+.auth-form-container, .login-form, .registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form-container {
+    padding: 5rem;
+    border: none;
+    background-color: #EEEEEE;
+    margin: 0,5rem;
+}
+
+.input-registr {
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #C8C8C8 ;
+    background-color: #ffffff;
+    margin-bottom: 24px;
+
+    font-family: 'Montserrat';
+    color: #7E7E7E;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+button {
+    border: none;
+    background-color:#B53EDF ;
+    border-radius: 40px;
+    padding-top: 13px;
+    padding-bottom: 15px;
+    padding-left: 55px;
+    padding-right: 57px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    cursor: pointer;
+
+}
+
+.link-btn {
+    
+    background: none;
+    color:black;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    text-decoration:underline;
+    font-weight: 400;
+    text-underline-offset: 3px;
+}
