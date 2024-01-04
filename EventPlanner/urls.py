@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import routers
-
+from purchases.views import PurchaseAPIView, PurchaseAPIList, PurchaseAPIUpdate, PurchaseAPIDestroy
 from event.views import Type_EventViewSet, EventAPIList, EventAPIUpdate, EventAPIDestroy
 from tasks.views import TaskAPIList, TaskAPIUpdate, TaskAPIDestroy, StatusViewSet
 
@@ -33,6 +33,9 @@ urlpatterns = [
     path('api/v1/taskdelete/<int:pk>/', TaskAPIDestroy.as_view()),
     path('api/v1/task/', TaskAPIList.as_view()),
     path('api/v1/task/<int:pk>/', TaskAPIUpdate.as_view()),
+    path('api/v1/purchasedelete/<int:pk>/', PurchaseAPIDestroy.as_view()),
+    path('api/v1/purchase/', PurchaseAPIList.as_view()),
+    path('api/v1/purchase/<int:pk>/', PurchaseAPIUpdate.as_view()),
     path('api/v1/eventdelete/<int:pk>/', EventAPIDestroy.as_view()),
     path('api/v1/auth/', include('rest_framework.urls')),
     path('api/v1/auth/', include('djoser.urls')),

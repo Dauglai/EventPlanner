@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 import os
 from pathlib import Path
 
@@ -32,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'event.apps.EventConfig',
     'tasks.apps.TasksConfig',
+    'purchases.apps.PurchasesConfig',
     'rest_framework.authtoken',
     'djoser',
 
@@ -147,5 +148,5 @@ REST_FRAMEWORK = {
 }
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static')
+    os.path.join(BASE_DIR, ‘frontend/build/static’)
 ]

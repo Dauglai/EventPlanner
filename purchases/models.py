@@ -9,7 +9,14 @@ class TypePurchase(models.Model):
         return self.name
 
 
+class Link(models.Model):
+    link = models.TextField()
+    def __str__(self):
+        return self.link
+
+
 class Purchase(models.Model):
+    link = models.CharField(max_length=10000)
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to ='uploads/% Y/% m/% d/')
     description = models.CharField(max_length=10000)
