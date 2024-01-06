@@ -38,11 +38,6 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
-    locations = [
-        ('Екатеринбург', 'Екатеринбург'),
-        ('Москва', 'Москва'),
-        ('Санкт-Петербург', 'Санкт-Петербург'),
-    ]
 
     genders = [
         ('M', 'мужчина'),
@@ -53,15 +48,12 @@ class Account(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField('Фамилия', max_length=255, blank=True, null=True)
     first_name = models.CharField('Имя', max_length=255, blank=True, null=True)
     patronymic = models.CharField('Отчество', max_length=255, null=True, blank=True)
-    location = models.CharField('Место учебы', max_length=50, blank=True, null=True, choices=locations)
     email = models.EmailField('Электронная почта', max_length=255, blank=True, unique=True)
     gender = models.CharField('Пол', max_length=50, blank=True, null=True, choices=genders)
     is_creater = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-
     objects = AccountManager()
-
     USERNAME_FIELD = 'email'
 
     def __str__(self):
@@ -70,4 +62,3 @@ class Account(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
-# Create your models here.

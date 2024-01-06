@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from rest_framework_simplejwt import views as jwt_views
 from rest_framework import routers
 from purchases.views import PurchaseAPIView, PurchaseAPIList, PurchaseAPIUpdate, PurchaseAPIDestroy
 from event.views import Type_EventViewSet, EventAPIList, EventAPIUpdate, EventAPIDestroy
@@ -27,6 +28,9 @@ router.register(r'status', StatusViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('token', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
+    path('', include('authentication.urls')),
     path('api/v1/', include(router.urls)),#http://127.0.0.1:8000/api/v1/event/
     path('api/v1/event/', EventAPIList.as_view()),
     path('api/v1/event/<int:pk>/', EventAPIUpdate.as_view()),
@@ -37,7 +41,7 @@ urlpatterns = [
     path('api/v1/purchase/', PurchaseAPIList.as_view()),
     path('api/v1/purchase/<int:pk>/', PurchaseAPIUpdate.as_view()),
     path('api/v1/eventdelete/<int:pk>/', EventAPIDestroy.as_view()),
-    path('api/v1/auth/', include('rest_framework.urls')),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
     path('api/v1/auth/', include('djoser.urls')),
     re_path(r'auth/', include('djoser.urls.authtoken'))
 ]
